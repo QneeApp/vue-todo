@@ -4,6 +4,9 @@
     <TodoInput v-on:addTodo="addTodo"></TodoInput>
     <TodoList v-bind:propsdata="todoItems" @removeTodo="removeTodo"></TodoList>
     <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
+    <div ref="qart">
+       <vue-q-art :config="config" ></vue-q-art>
+    </div>
   </div>
 </template>
 
@@ -12,11 +15,18 @@ import TodoHeader from './components/TodoHeader.vue'
 import TodoInput from './components/TodoInput.vue'
 import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
+import VueQArt from 'vue-qart'
 
 export default {
   data() {
     return {
-      todoItems: []
+      todoItems: [],
+      msg: 'Welcome to your Vue.js App',
+      config: {
+        value: 'https://www.google.com',
+        imagePath: 'src/assets/ci_qneeapp.png',
+        filter: 'color'
+      }
     };
   },
   methods: {
@@ -41,10 +51,11 @@ export default {
     },
   },
   components: {
+    VueQArt,
     "TodoHeader": TodoHeader,
     "TodoInput": TodoInput,
     "TodoList": TodoList,
-    "TodoFooter": TodoFooter,
+    "TodoFooter": TodoFooter
   }
 }
 </script>
